@@ -5,10 +5,10 @@
 ## Items that must be changed for the process to work are designated by < >.
 ## Some items in the config can be removed, and we have tried to note these with comments as well.
 
-this_file_is_unedited: TRUE # This config file does not work as presented.  There are a few additional files
+this_file_is_unedited: FALSE # This config file does not work as presented.  There are a few additional files
 name: minimal
 start_date: 2020-01-31
-end_date: 2020-05-31
+end_date: 2020-08-31
 nsimulations: 15
 dt: 0.25
 ## dynfilter_path: data/filter.txt ## this method of filtering is not currently working
@@ -17,7 +17,7 @@ spatial_setup:
   census_year: 2010
   base_path: data
   modeled_states: # To model a region that is not a state, remove modeled_states and the importation: block
-   - <Your State Postal Code> # e.g., MD  You can provide as many of these as you like, but more counties means slower runs
+   - CA # e.g., MD  You can provide as many of these as you like, but more counties means slower runs
   setup_name: minimal
   geodata: geodata.csv
   mobility: mobility.txt
@@ -27,37 +27,37 @@ spatial_setup:
   shapefile: <shapefile.shp> # We haven't created fake shapefiles yet.  Stay tuned.
   shapefile_name:  <shapefile.shp> # This should be the same as above.  We are working to merge the two
 
-importation: ## You can seed the SEIR model directly instead of using importation.  To do so, comment out this block
-  census_api_key: <your census api key> # For use with the tidycensus package
-  travel_dispersion: 3
-  maximum_destinations: Inf
-  dest_type : state
-  dest_country : USA
-  aggregate_to: airport
-  cache_work: TRUE
-  update_case_data: TRUE
-  draw_travel_from_distribution: FALSE
-  print_progress: FALSE
-  travelers_threshold: 10000
-  airport_cluster_distance: 80
-  param_list:
-    incub_mean_log: log(5.89)
-    incub_sd_log: log(1.74)
-    inf_period_nohosp_mean: 15
-    inf_period_nohosp_sd: 5
-    inf_period_hosp_mean_log: 1.23
-    inf_period_hosp_sd_log: 0.79
-    p_report_source: [0.05, 0.25]
-    shift_incid_days: -10
-    delta: 1
+  #importation: ## You can seed the SEIR model directly instead of using importation.  To do so, comment out this block
+  #  census_api_key: <your census api key> # For use with the tidycensus package
+  #  travel_dispersion: 3
+  #  maximum_destinations: Inf
+  #  dest_type : state
+  #  dest_country : USA
+  #  aggregate_to: airport
+  #  cache_work: TRUE
+  #  update_case_data: TRUE
+  #  draw_travel_from_distribution: FALSE
+  #  print_progress: FALSE
+  #  travelers_threshold: 10000
+  #  airport_cluster_distance: 80
+  #  param_list:
+  #    incub_mean_log: log(5.89)
+  #    incub_sd_log: log(1.74)
+  #    inf_period_nohosp_mean: 15
+  #    inf_period_nohosp_sd: 5
+  #    inf_period_hosp_mean_log: 1.23
+  #    inf_period_hosp_sd_log: 0.79
+  #    p_report_source: [0.05, 0.25]
+  #    shift_incid_days: -10
+  #    delta: 1
 
-seeding: ## If removing the importation, comment out this seeding block
-  method: FolderDraw
-  folder_path: importation/minimal/
+  #seeding: ## If removing the importation, comment out this seeding block
+  #  method: FolderDraw
+  #  folder_path: importation/minimal/
 
-# seeding: ## If removing importation, uncomment this seeding block
-#   method: PoissonDistributed
-#   lambda_file: data/minimal/seeding.csv
+ seeding: ## If removing importation, uncomment this seeding block
+   method: PoissonDistributed
+   lambda_file: data/minimal/seeding.csv
 
 seir:
   parameters:
@@ -185,7 +185,6 @@ report:
     scenario_labels:
     - Lockdown followed by Worst Case Uncontrolled Spread
     - Lockdown followed by Test and Isolate
-    - Lockdown followed by Moderate Social Distancing
     scenario_colors: ["#D95F02", "#1B9E77", "#7570B3"]
     pdeath_labels: ["0.25% IFR", "0.5% IFR", "1% IFR"]
     display_dates: ["2020-05-01", "2020-07-01", "2020-09-01"]
