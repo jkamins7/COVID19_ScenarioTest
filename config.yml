@@ -20,12 +20,12 @@ spatial_setup:
    - CA # e.g., MD  You can provide as many of these as you like, but more counties means slower runs
   setup_name: minimal
   geodata: geodata.csv
-  mobility: mobility.txt
+  mobility: mobility.csv
   popnodes: population
   nodenames: geoid
   include_in_report: include_in_report
-  shapefile: <shapefile.shp> # We haven't created fake shapefiles yet.  Stay tuned.
-  shapefile_name:  <shapefile.shp> # This should be the same as above.  We are working to merge the two
+  #  shapefile: <shapefile.shp> # We haven't created fake shapefiles yet.  Stay tuned.
+  #  shapefile_name:  <shapefile.shp> # This should be the same as above.  We are working to merge the two
 
   #importation: ## You can seed the SEIR model directly instead of using importation.  To do so, comment out this block
   #  census_api_key: <your census api key> # For use with the tidycensus package
@@ -57,7 +57,7 @@ spatial_setup:
 
  seeding: ## If removing importation, uncomment this seeding block
    method: PoissonDistributed
-   lambda_file: data/minimal/seeding.csv
+   lambda_file: data/seeding.csv
 
 seir:
   parameters:
