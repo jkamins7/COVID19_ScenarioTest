@@ -76,6 +76,7 @@ interventions:
   scenarios:
     - Reduce_gamma
     - Scenario1
+    - Scenario2
   settings:
     Reduce_gamma:
       template: Reduce
@@ -95,23 +96,27 @@ interventions:
         distribution: uniform
         low: .14
         high: .33
-    KansasCity:
-      template: ReduceR0
-      period_start_date: 2020-04-01
+    Scenario2:
+      template: Reduce      
+      parameter: r0                       # Parameter to reduce
+      period_start_date: 2020-02-01
       period_end_date: 2020-05-15
       value:
-        distribution: uniform
-        low: .04
-        high: .23
+        distribution: uniform            # Value of reduction as it was specified before.
+        low: .6
+        high: .7
+      fatigue_rate:
+        distribution: uniform            # Value of fatigue
+        low: .1
+        high: .2
+      fatigue_frequency_days: 4*7         # Number of days for the NPI to reach a new_value
+      fatigue_min: .2  
     Scenario1:
       template: Stacked
       scenarios:
         - Wuhan
         - Reduce_gamma
-    Scenario2:
-      template: Stacked
-      scenarios:
-        - Wuhan
+    
 hospitalization:
   paths:
     output_path: hospitalization
