@@ -4538,7 +4538,7 @@ interventions:
 outcomes:
   method: delayframe
   param_from_file: TRUE
-  param_place_file: "usa-geoid-params-output.parquet"
+  param_place_file: "COVIDScenarioPipeline/Outcomes/data/usa-geoid-params-output.parquet"
   scenarios:
     - low
   settings:
