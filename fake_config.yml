@@ -64,9 +64,9 @@ spatial_setup:
    - MP
    - GU
   setup_name: usa_inference_territories
-  geodata: geodata_territories.csv
-  mobility: mobility_territories.csv
-  popnodes: pop2010
+  geodata: geodata_territories_2019.csv
+  mobility: mobility_territories_2011-2015.csv
+  popnodes: pop2019est
   nodenames: geoid
   include_in_report: include_in_report
 
